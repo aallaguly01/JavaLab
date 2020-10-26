@@ -1,13 +1,10 @@
 package ru.itis.javalab.servlets;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 import ru.itis.javalab.models.User;
-import ru.itis.javalab.repositories.SimpleJdbcTemplate;
-import ru.itis.javalab.repositories.UsersRepository;
-import ru.itis.javalab.repositories.UsersRepositoryJdbcImpl;
+import ru.itis.javalab.services.UsersService;
 
-import javax.servlet.ServletException;
+import javax.servlet.*;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,25 +13,30 @@ import java.util.List;
 
 public class UsersServlet extends HttpServlet {
 
-    private UsersRepository usersRepository;
+    private UsersService usersServices;
 
     @Override
-    public void init() throws ServletException {
-        HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl("jdbc:postgresql://localhost:5432/WebApplication");
-        hikariConfig.setDriverClassName("org.postgresql.Driver");
-        hikariConfig.setUsername("postgres");
-        hikariConfig.setPassword("B1gather");
-        hikariConfig.setMaximumPoolSize(20);
-
-        HikariDataSource dataSource = new HikariDataSource(hikariConfig);
-        usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        //SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+    public void init(ServletConfig config) throws ServletException {
+        ServletContext servletContext = config.getServletContext();
+        usersServices = (UsersService) servletContext.getAttribute("usersService");
     }
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<User> users = usersRepository.findAll();
-        System.out.println(users);
+
+        List<User> users = usersServices.getAllUsers();
+        request.setAttribute("usersForJsp", users);
+        request.getRequestDispatcher("jsp/users.jsp").forward(request, response);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String color = req.getParameter("color");
+        Cookie cookie = new Cookie("color", color);
+        cookie.setMaxAge(60 * 60 * 24 * 365);
+        resp.addCookie(cookie);
+        resp.sendRedirect("/users");
+    }
+
 }

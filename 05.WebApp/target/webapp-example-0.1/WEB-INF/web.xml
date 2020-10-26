@@ -11,4 +11,46 @@
         <servlet-name>users-servlet</servlet-name>
         <url-pattern>/users</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>login-servlet</servlet-name>
+        <servlet-class>ru.itis.javalab.servlets.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>login-servlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+
+    <filter>
+        <filter-name>urlFilter</filter-name>
+        <filter-class>ru.itis.javalab.filters.RequestUrlFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>urlFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>headersFilter</filter-name>
+        <filter-class>ru.itis.javalab.filters.RequestHeadersFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>headersFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>loggingFilter</filter-name>
+        <filter-class>ru.itis.javalab.filters.LoggingFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>loggingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 </web-app>
