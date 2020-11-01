@@ -13,14 +13,11 @@
 <body>
 
 <form action="/users" method="post">
-
-    <label value="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
-    <br></br>
-    <label value="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit">Sign Up</button>
+    <input type="text" name="username" />
+    <br/>
+    <input type="password" name="password" />
+    <input type="checkbox" name="remember" value="true" />
+    <input type="submit" />
 </form>
 </body>
 </html>
