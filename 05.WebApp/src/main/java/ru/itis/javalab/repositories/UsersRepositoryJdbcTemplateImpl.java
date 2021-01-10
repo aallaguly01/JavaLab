@@ -1,17 +1,19 @@
 package ru.itis.javalab.repositories;
 
+import org.graalvm.compiler.nodes.calc.IntegerDivRemNode;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import ru.itis.javalab.models.User;
 
 import javax.sql.DataSource;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
     private JdbcTemplate jdbcTemplate;
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     //language=SQL
     private static final String SQL_SELECT_BY_AGE = "select * from person where age  = ?";
@@ -25,16 +27,27 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
     private static final String SQL_UPDATE = "update person firstname = ?, lastname = ?, age = ? where id = ?";
     //language=SQL
     private static final String SQL_DELETE = "DELETE FROM person WHERE id =?";
+    //language=SQL
+    private static final String SQL_SELECT_ALL_WITH_PAGES = "select * from person order by id limit :limit offset :offset ;";
+    //language=SQL
+    private static final String SQL_FIND_ONE_BY_EMAIL = "select * from person where email = ? limit 1";
+    //language=SQL
+    private static final String SQL_UPDATE_AuthCookie = "update person set cookieauth = ? where email = ?";
+    //language=SQl
+    private static final String SQL_FIND_BY_AUTHCOOKIE = "select * from person where cookieauth = ? limit 1";
 
     private RowMapper<User> userRowMapper = (row, i) -> User.builder()
             .id(row.getLong("id"))
             .firstName(row.getString("firstName"))
             .lastName(row.getString("lastName"))
             .age(row.getInt("age"))
+            .email(row.getString("email"))
+            .password(row.getString("password"))
             .build();
 
     public UsersRepositoryJdbcTemplateImpl(DataSource dataSource){
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
 
@@ -48,6 +61,7 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
         return Optional.empty();
     }
 
+
     @Override
     public List<User> findAll() {
         return jdbcTemplate.query(SQL_SELECT_ALL, userRowMapper);
@@ -55,7 +69,33 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
     @Override
     public List<User> findAll(int page, int size) {
-        return null;
+        Map<String, Object> params = new HashMap<>();
+        params.put("limit", size);
+        params.put("offset", page * size);
+        return namedParameterJdbcTemplate.query(SQL_SELECT_ALL_WITH_PAGES, params, userRowMapper);
+    }
+
+    @Override
+    public Optional<User> findOneByEmail(String email) {
+        try {
+            return Optional.of(jdbcTemplate.queryForObject(SQL_FIND_ONE_BY_EMAIL, userRowMapper, email));
+        } catch (EmptyResultDataAccessException e){
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public void updateAuthCookie(UUID uuid, String email) {
+        jdbcTemplate.update(SQL_UPDATE_AuthCookie, uuid, email);
+    }
+
+    @Override
+    public boolean checkAuthCookie(String uuid) {
+        try {
+            return jdbcTemplate.queryForObject(SQL_FIND_BY_AUTHCOOKIE, userRowMapper, uuid) != null;
+        } catch (EmptyResultDataAccessException e){
+            return false;
+        }
     }
 
     @Override
@@ -72,6 +112,7 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
     @Override
     public void save(User entity) {
+        System.out.println("asdasdasd");
         jdbcTemplate.update(SQL_INSERT, entity.getFirstName(), entity.getLastName(), entity.getAge());
     }
 

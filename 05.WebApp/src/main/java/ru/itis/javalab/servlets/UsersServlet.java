@@ -1,5 +1,6 @@
 package ru.itis.javalab.servlets;
 
+import org.springframework.context.ApplicationContext;
 import ru.itis.javalab.models.User;
 import ru.itis.javalab.services.UsersService;
 
@@ -18,7 +19,9 @@ public class UsersServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext servletContext = config.getServletContext();
-        usersServices = (UsersService) servletContext.getAttribute("usersService");
+        ApplicationContext applicationContext = (ApplicationContext) servletContext.getAttribute("applicationContext");
+        usersServices = applicationContext.getBean(UsersService.class);
+
     }
 
 
@@ -28,6 +31,7 @@ public class UsersServlet extends HttpServlet {
         List<User> users = usersServices.getAllUsers();
         request.setAttribute("usersForJsp", users);
         request.getRequestDispatcher("jsp/users.jsp").forward(request, response);
+
     }
 
     @Override

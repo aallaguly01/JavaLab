@@ -3,6 +3,8 @@ package ru.itis.javalab.models;
 
 import lombok.*;
 
+import java.util.UUID;
+
 
 @Getter
 @Setter
@@ -17,5 +19,6 @@ public class User {
     private Integer age;
     private String email;
     private String password;
-
+    private UUID cookieAuth;
+    
 }
