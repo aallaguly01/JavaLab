@@ -1,5 +1,6 @@
 package ru.itis.javalab.services;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.itis.javalab.dto.UserDto;
 import ru.itis.javalab.models.User;
 import ru.itis.javalab.repositories.UsersRepository;
@@ -13,6 +14,7 @@ import static ru.itis.javalab.dto.UserDto.from;
 
 public class UserServicesImpl implements UsersService {
     private UsersRepository usersRepository;
+    private PasswordEncoder passwordEncoder;
 
     public UserServicesImpl(UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
@@ -47,8 +49,9 @@ public class UserServicesImpl implements UsersService {
 //            }
 //
 //        });
+
         if (usersRepository.findOneByEmail(email).isPresent()){
-            if (password.equals(usersRepository.findOneByEmail(email).get().getPassword())){
+            if (passwordEncoder.matches(password, usersRepository.findOneByEmail(email).get().getPassword())){
                 usersRepository.updateAuthCookie(uuid, email);
                 return true;
             }

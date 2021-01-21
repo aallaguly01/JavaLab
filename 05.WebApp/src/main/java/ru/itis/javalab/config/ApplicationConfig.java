@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 
 @Configuration
 
-@PropertySource("classpath:db.properties")
+//@PropertySource("classpath:db.properties")
 //@ComponentScan(basePackages = "ru.itis.javalab")
 
 public class ApplicationConfig {
