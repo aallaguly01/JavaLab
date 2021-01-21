@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ExampleServlet", urlPatterns = {"/aaa"})
+@WebServlet(name = "ExampleServlet", urlPatterns = {"/freemarkerPage"})
 public class ExampleServlet extends HttpServlet {
     private UsersService usersServices;
 
@@ -33,10 +33,11 @@ public class ExampleServlet extends HttpServlet {
 
 
         List<User> users = usersServices.getAllUsers();
+        System.err.println(users.size());
 
         request.setAttribute("users", users);
 
-        request.getRequestDispatcher("ftl/users.ftlh").forward(request, response);
+        request.getRequestDispatcher("ftl/users.ftl").forward(request, response);
     }
 
 
