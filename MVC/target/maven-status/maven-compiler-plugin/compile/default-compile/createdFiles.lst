@@ -1,0 +1,13 @@
+ru\itis\javalab\dto\UserDto.class
+ru\itis\javalab\repositories\ProductRepository.class
+ru\itis\javalab\services\UsersService.class
+ru\itis\javalab\repositories\UsersRepository.class
+ru\itis\javalab\repositories\CrudRepository.class
+ru\itis\javalab\repositories\UsersRepositoryJdbcTemplateImpl.class
+ru\itis\javalab\models\Product.class
+ru\itis\javalab\services\UsersServiceImpl.class
+ru\itis\javalab\models\User.class
+ru\itis\javalab\models\User$UserBuilder.class
+ru\itis\javalab\config\ApplicationConfig.class
+ru\itis\javalab\dto\UserDto$UserDtoBuilder.class
+ru\itis\javalab\controllers\UsersController.class
