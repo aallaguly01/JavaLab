@@ -6,8 +6,8 @@ HomeWorks  (1 - it is completely done 0 nothing is done)
 03. Реализовать Maven-проект для многопоточной загрузки - 1
 04. Реализовать SimpleJdbcTemplate - 1
 05. Логирование и примитивная безопасность - 1
-06. PasswordEncoder feat. HttpSession 
-07. Реализовать EntityManager - 0.8 (findById - плохо работает)
+06. PasswordEncoder feat. HttpSession - 0.5 (PasswordEncoder added to project without Session)
+07. Реализовать EntityManager - 0.8 (findById - working bad)
 08. Сделать Web-приложение со страницами на Freemarker (2-3) страницы 
 09. Sockets
 10. Сделать AnnotationProcessing
