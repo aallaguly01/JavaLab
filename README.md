@@ -8,7 +8,7 @@ HomeWorks  (1 - it is completely done 0 nothing is done)
 05. Логирование и примитивная безопасность - 1
 06. PasswordEncoder feat. HttpSession - 0.5 (PasswordEncoder added to project without Session)
 07. Реализовать EntityManager - 0.8 (findById - working bad)
-08. Сделать Web-приложение со страницами на Freemarker (2-3) страницы - 0 or 1 (project working but strange, example from https://zetcode.com/java/freemarker/)
+08. Сделать Web-приложение со страницами на Freemarker (2-3) страницы - 0 or 1 (project workign but strange(like jsp), source from https://zetcode.com/java/freemarker/)
 09. Sockets
 10. Сделать AnnotationProcessing
 11. CSRF и постоянное хранилище сессий
