@@ -1,5 +1,5 @@
 # JavaLab
-HomeWorks  (1 - it is completely done 0 nothing is done)
+HomeWorks  (1 - done 0 nothing is done)
 
 01. Реализовать Thread Pool - 1                                             
 02. JAR-приложения для многопоточной загрузки - 1                            
