@@ -50,8 +50,9 @@ public class UserServicesImpl implements UsersService {
 //
 //        });
 
+//        passwordEncoder.matches(password, usersRepository.findOneByEmail(email).get().getPassword())
         if (usersRepository.findOneByEmail(email).isPresent()){
-            if (passwordEncoder.matches(password, usersRepository.findOneByEmail(email).get().getPassword())){
+            if (password.equals(usersRepository.findOneByEmail(email).get().getPassword())){
                 usersRepository.updateAuthCookie(uuid, email);
                 return true;
             }

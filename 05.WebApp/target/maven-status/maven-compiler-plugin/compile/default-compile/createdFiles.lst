@@ -17,5 +17,6 @@ ru\itis\javalab\models\User.class
 ru\itis\javalab\servlets\UsersServlet.class
 ru\itis\javalab\models\User$UserBuilder.class
 ru\itis\javalab\dto\UserDto$UserDtoBuilder.class
+ru\itis\javalab\filters\CsrfFilter.class
 ru\itis\javalab\filters\RequestHeadersFilter.class
 ru\itis\javalab\servlets\ExampleServlet.class

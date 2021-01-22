@@ -8,6 +8,7 @@
 </head>
 <body>
 <div>
+    <h1>${_csrf_token}</h1>
     <h1 style="color: ${cookie.get("color").value}">USERS</h1>
     <form action="/users" method="post">
         <select name="color">
@@ -15,6 +16,7 @@
             <option value="green">GREEN</option>
             <option value="blue">BLUE</option>
         </select>
+        <input type="hidden" value="${_csrf_token}" name="_csrf_token">
         <input type="submit" value="OK">
     </form>
 </div>

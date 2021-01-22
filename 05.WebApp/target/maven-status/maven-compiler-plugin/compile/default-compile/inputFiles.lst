@@ -4,6 +4,7 @@ D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\filters\AuthFilt
 D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\servlets\LoginServlet.java
 D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\services\UsersService.java
 D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\repositories\ProductRepository.java
+D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\filters\CsrfFilter.java
 D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\repositories\old\RowMapper.java
 D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\filters\RequestHeadersFilter.java
 D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\repositories\CrudRepository.java
