@@ -18,6 +18,7 @@ D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\repositories\old
 D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\services\UserServicesImpl.java
 D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\repositories\UsersRepositoryJdbcTemplateImpl.java
 D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\servlets\UsersJsonServlet.java
+D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\filters\SessionFilter.java
 D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\filters\RequestUrlFilter.java
 D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\repositories\old\SimpleJdbcTemplate.java
 D:\ITIS\JavaLab\JavaLab\05.WebApp\src\main\java\ru\itis\javalab\filters\LoggingFilter.java

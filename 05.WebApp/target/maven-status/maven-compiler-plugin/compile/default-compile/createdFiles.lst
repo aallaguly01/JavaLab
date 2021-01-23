@@ -1,3 +1,4 @@
+ru\itis\javalab\filters\SessionFilter.class
 ru\itis\javalab\filters\AuthFilter.class
 ru\itis\javalab\filters\LoggingFilter.class
 ru\itis\javalab\services\UsersService.class

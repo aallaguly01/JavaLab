@@ -32,7 +32,7 @@ public class AuthFilter implements Filter {
         if (cookies != null){
             for (Cookie cookie: cookies){
                 if("AuthCookie".equals(cookie.getName()))
-                    if(usersService.checkAuthCookie(cookie.getValue())){
+                    if(usersService.checkAuthCookie((String) cookie.getValue())){
                         cookieFound = true;
                     }
             }

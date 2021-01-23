@@ -62,6 +62,9 @@ public class UserServicesImpl implements UsersService {
 
     @Override
     public boolean checkAuthCookie(String authCookie) {
-        return usersRepository.checkAuthCookie(authCookie);
+        if (authCookie != null)
+            return usersRepository.checkAuthCookie(authCookie);
+        else
+            return false;
     }
 }
